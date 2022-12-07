@@ -1,10 +1,9 @@
-import com.sun.jdi.IntegerValue;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-public class Main {
+
+public class MainA {
 
     static String showArrayInt(int[] col){
         String array = "";
@@ -42,14 +41,14 @@ public class Main {
             int count = 0;
             for (int i = 0; i < allLinesArray.length; i++) {
                 int[] line = StringToArray(allLinesArray[i]);
-                if (line[0] == line[2] || line[1] == line[3] || line[1] == line[2] || line[0] == line[3]) {
+                if (line[0] < line[2] && line[1] >= line[3]) {
                     count++;
-                } else {
-                    if (line[0] < line[2] && line[1] > line[2]) {
-                        count++;
-                    } else if (line[0] > line[2] && line[0] < line[3]) {
-                        count++;
-                    }
+                }
+                if (line[0] > line[2] && line[1] <= line[3]){
+                    count++;
+                }
+                if (line[0] == line[2]){
+                    count++;
                 }
                 System.out.println(showArrayInt(line) + " " + count);
 
